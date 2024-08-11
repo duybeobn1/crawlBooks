@@ -1,0 +1,13 @@
+<h2>Danh sách sách đã đọc</h2>
+<div id="readList">
+  <div class="readBook" *ngFor="let book of readList">
+    <div class="image" *ngIf="book.volumeInfo.imageLinks?.thumbnail">
+      <img [src]="book.volumeInfo.imageLinks.thumbnail" alt="{{ book.volumeInfo.title }}">
+    </div>
+    <div class="details">
+      <h3>{{ book.volumeInfo.title }}</h3>
+      <p>{{ book.volumeInfo.authors?.join(', ') }}</p>
+    </div>
+    <button mat-button (click)="removeFromReadList(book)">Xóa khỏi danh sách đã đọc</button>
+  </div>
+</div>

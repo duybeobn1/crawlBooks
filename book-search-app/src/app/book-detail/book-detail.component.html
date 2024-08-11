@@ -1,0 +1,12 @@
+<div *ngIf="book">
+    <h2>{{ book.volumeInfo.title }}</h2>
+    <img *ngIf="book.volumeInfo.imageLinks?.thumbnail" [src]="book.volumeInfo.imageLinks.thumbnail" alt="{{ book.volumeInfo.title }}">
+    <p><strong>Tác giả:</strong> {{ book.volumeInfo.authors?.join(', ') }}</p>
+    <p><strong>Nhà xuất bản:</strong> {{ book.volumeInfo.publisher }}</p>
+    <p><strong>Ngày xuất bản:</strong> {{ book.volumeInfo.publishedDate }}</p>
+    <p><strong>Mô tả:</strong> {{ book.volumeInfo.description }}</p>
+    <p><strong>Số trang:</strong> {{ book.volumeInfo.pageCount }}</p>
+    <p><strong>Thể loại:</strong> {{ book.volumeInfo.categories?.join(', ') }}</p>
+    <p><strong>Ngôn ngữ:</strong> {{ book.volumeInfo.language }}</p>
+  </div>
+  

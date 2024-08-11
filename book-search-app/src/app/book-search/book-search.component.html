@@ -1,0 +1,22 @@
+<div id="search">
+  <input matInput [(ngModel)]="bookTitle" placeholder="Nhập tên sách">
+  <input matInput [(ngModel)]="authorName" placeholder="Nhập tên tác giả (không bắt buộc)">
+  <button mat-raised-button color="primary" (click)="searchBooks()">Tìm Kiếm</button>
+</div>
+
+<div id="results">
+  <div class="result" *ngFor="let book of books | slice:0:3">
+    <div class="details">
+      <h2>{{ book.volumeInfo.title }}</h2>
+      <p>Tác giả: {{ book.volumeInfo.authors?.join(', ') }}</p>
+      <p>Nhà xuất bản: {{ book.volumeInfo.publisher }}</p>
+      <p>Ngày xuất bản: {{ book.volumeInfo.publishedDate }}</p>
+      <p>Mô tả: {{ book.volumeInfo.description }}</p>
+      <button mat-button (click)="addToReadList(book)">Thêm vào danh sách đã đọc</button>
+      <button mat-button (click)="addToWishList(book)">Thêm vào danh sách sẽ đọc</button>
+    </div>
+    <div class="image" *ngIf="book.volumeInfo.imageLinks?.thumbnail">
+      <img [src]="book.volumeInfo.imageLinks.thumbnail" alt="{{ book.volumeInfo.title }}">
+    </div>
+  </div>
+</div>
