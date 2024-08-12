@@ -1,13 +1,14 @@
-<h2>Danh sách sách sẽ đọc</h2>
-<div id="wishList">
-  <div class="wishBook" *ngFor="let book of wishList">
-    <div class="image" *ngIf="book.volumeInfo.imageLinks?.thumbnail">
-      <img [src]="book.volumeInfo.imageLinks.thumbnail" alt="{{ book.volumeInfo.title }}">
+<div class="list-container">
+  <div class="book-card" *ngFor="let book of wishList">
+    <div class="book-thumbnail">
+      <img [src]="book.imageUrl || 'assets/no-image.png'" alt="{{ book.title }}">
     </div>
-    <div class="details">
-      <h3>{{ book.volumeInfo.title }}</h3>
-      <p>{{ book.volumeInfo.authors?.join(', ') }}</p>
+    <div class="book-info">
+      <h3>{{ book.title }}</h3>
+      <p>{{ book.author }}</p>
     </div>
-    <button mat-button (click)="removeFromWishList(book)">Xóa khỏi danh sách sẽ đọc</button>
+    <div class="actions">
+      <button mat-button (click)="removeFromWishList(book)">Remove from Wishlist</button>
+    </div>
   </div>
 </div>

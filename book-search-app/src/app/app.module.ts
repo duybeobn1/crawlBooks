@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { BookSearchComponent } from './book-search/book-search.component';
@@ -15,6 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReadListService } from './read-list.service';
 import { WishListComponent } from './wish-list/wish-list.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // Import FontAwesomeModule
+import { CommonModule } from '@angular/common';
+import { BookDetailsComponent } from './book-detail/book-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +26,12 @@ import { WishListComponent } from './wish-list/wish-list.component';
     BookSearchComponent,
     ReadListComponent,
     NavigationComponent,
-    WishListComponent
+    WishListComponent,
+    BookDetailsComponent
   ],
   imports: [
+    MatIconModule,
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -33,7 +40,9 @@ import { WishListComponent } from './wish-list/wish-list.component';
     MatListModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
+    
   ],
   providers: [ReadListService],
   bootstrap: [AppComponent]

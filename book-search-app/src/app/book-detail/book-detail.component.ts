@@ -1,21 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { AppwriteService } from '../appwrite.service';
 
 @Component({
-  selector: 'app-book-detail',
+  selector: 'app-book-details',
   templateUrl: './book-detail.component.html',
   styleUrls: ['./book-detail.component.css']
 })
-export class BookDetailComponent implements OnInit {
+export class BookDetailsComponent implements OnInit {
   book: any;
+  errorMessage: string | null = null;  // To store any error message
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private appwriteService: AppwriteService) {}
 
   ngOnInit(): void {
     const bookId = this.route.snapshot.paramMap.get('id');
-    this.http.get(`https://www.googleapis.com/books/v1/volumes/${bookId}`).subscribe(data => {
-      this.book = data;
-    });
+    if (bookId) {
+        this.appwriteService.getBookById(bookId).then(response => {
+            this.book = response;
+        }).catch(error => {
+            console.error('Error fetching book details:', error);
+            this.errorMessage = 'Could not find the book details. It might have been removed.';
+        });
+    } else {
+        this.errorMessage = 'Invalid book ID.';
+        console.error('Book ID is null');
+    }
   }
 }

@@ -1,23 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AppwriteService } from '../appwrite.service';
 
-import { BookDetailComponent } from './book-detail.component';
+@Component({
+  selector: 'app-book-details',
+  templateUrl: './book-detail.component.html',
+  styleUrls: ['./book-detail.component.css']
+})
+export class BookDetailsComponent implements OnInit {
+  book: any;
+  errorMessage: string | null = null;  // To store any error message
 
-describe('BookDetailComponent', () => {
-  let component: BookDetailComponent;
-  let fixture: ComponentFixture<BookDetailComponent>;
+  constructor(private route: ActivatedRoute, private appwriteService: AppwriteService) {}
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [BookDetailComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(BookDetailComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit(): void {
+    const bookId = this.route.snapshot.paramMap.get('id');
+    if (bookId) {
+        this.appwriteService.getBookById(bookId).then(response => {
+            this.book = response;
+        }).catch(error => {
+            console.error('Error fetching book details:', error);
+            this.errorMessage = 'Could not find the book details. It might have been removed.';
+        });
+    } else {
+        this.errorMessage = 'Invalid book ID.';
+        console.error('Book ID is null');
+    }
+  }
+}

@@ -1,5 +1,19 @@
-<nav>
-  <a routerLink="/">Tìm kiếm sách</a>
-  <a routerLink="/read-list">Danh sách đã đọc ({{ readListCount }})</a>
-  <a routerLink="/wish-list">Danh sách sẽ đọc ({{ wishListCount }})</a>
+<nav class="navbar">
+  <div class="nav-links">
+    <a routerLink="/search">Tìm kiếm sách</a>
+    <a routerLink="/read-list">Danh sách đã đọc ({{ readListCount }})</a>
+    <a routerLink="/wish-list">Danh sách sẽ đọc ({{ wishListCount }})</a>
+  </div>
+  <div class="user-info">
+    <ng-container *ngIf="!user">
+      <button class="google-signin" (click)="login()">
+        <fa-icon [icon]="['fab', 'google']"></fa-icon>
+        Sign in with Google
+      </button>
+    </ng-container>
+    <ng-container *ngIf="user">
+      <span>Welcome, {{ user.name }}</span>
+      <button (click)="logout()">Logout</button>
+    </ng-container>
+  </div>
 </nav>
