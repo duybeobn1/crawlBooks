@@ -1,11 +1,10 @@
 <div class="search-container">
-  <input matInput [(ngModel)]="bookTitle" placeholder="Nhập tên sách" (keyup.enter)="searchBooks()" class="search-input">
-  <input matInput [(ngModel)]="authorName" placeholder="Nhập tên tác giả (không bắt buộc)" (keyup.enter)="searchBooks()" class="search-input">
+  <input matInput [(ngModel)]="bookTitle" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}" (keyup.enter)="searchBooks()" class="search-input">
+  <input matInput [(ngModel)]="authorName" placeholder="{{ 'AUTHOR_PLACEHOLDER' | translate }}" (keyup.enter)="searchBooks()" class="search-input">
   <button mat-icon-button color="primary" (click)="searchBooks()" class="search-button">
     <mat-icon>search</mat-icon>
   </button>
 </div>
-
 
 <div class="results-container">
   <div class="result-card" *ngFor="let book of books">
@@ -14,7 +13,7 @@
            [src]="book.volumeInfo.imageLinks.thumbnail" 
            alt="{{ book.volumeInfo.title }}">
       <img *ngIf="!book.volumeInfo.imageLinks?.thumbnail" 
-           src="./assets/no-image.png" 
+           src="../../assets/no-image.png" 
            alt="No Image Available">
     </div>
     <div class="book-info">

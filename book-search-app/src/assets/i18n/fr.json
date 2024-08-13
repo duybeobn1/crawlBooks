@@ -1,0 +1,21 @@
+{
+  "SEARCH_PLACEHOLDER": "Entrez le titre du livre",
+  "AUTHOR_PLACEHOLDER": "Entrez le nom de l'auteur (facultatif)",
+  "SEARCH_BUTTON": "Chercher",
+  "ADD_TO_READ_LIST": "Ajouter à la liste de lecture",
+  "ADD_TO_WISH_LIST": "Ajouter à la liste de souhaits",
+  "REMOVE_FROM_READLIST": "Supprimer de la liste de lecture",
+  "REMOVE_FROM_WISHLIST": "Supprimer de la liste de souhaits",
+  "AUTHOR": "Auteur:",
+  "PUBLISHED_DATE": "Date de publication:",
+  "PAGE_COUNT": "Nombre de pages:",
+  "AVERAGE_RATING": "Note moyenne:",
+  "NO_RATING": "Pas de note",
+  "DESCRIPTION": "Description:",
+  "PREVIEW": "Aperçu",
+  "LOGIN": "Se connecter",
+  "LOGOUT": "Se déconnecter",
+  "WELCOME": "Bienvenue",
+  "READ_LIST": "Liste de lecture",
+  "WISH_LIST": "Liste de souhaits"
+}

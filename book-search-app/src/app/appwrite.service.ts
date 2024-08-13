@@ -33,8 +33,16 @@ export class AppwriteService {
   }
 
   getCurrentUser() {
-    return this.account.get();
+    return this.account.get().then(user => {
+      return {
+        $id: user.$id, // Include the $id
+        name: user.name,
+        picture: user.prefs?.['profilePicture'] || 'assets/default-avatar.png', // Access using bracket notation
+      };
+    });
   }
+  
+  
 
   createBook(book: any) {
     return this.databases.createDocument(this.databaseId, this.collectionId, 'unique()', book);

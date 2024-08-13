@@ -1,21 +1,21 @@
-<div class="book-details" *ngIf="book">
-  <div class="book-header">
-    <img [src]="book.imageUrl" alt="{{ book.title }}" class="book-image">
-    <div class="book-info">
-      <h1>{{ book.title }}</h1>
-      <p><strong>Tác giả:</strong> {{ book.author }}</p>
+<div class="book-details-container" *ngIf="book">
+  <div class="book-cover">
+    <img [src]="book.imageUrl" alt="{{ book.title }}" class="book-cover-image">
+  </div>
+  <div class="book-info">
+    <h1 class="book-title">{{ book.title }}</h1>
+    <p class="book-author"><strong>{{ 'AUTHOR' | translate }}</strong> {{ book.author }}</p>
+    <p class="book-publishedDate"><strong>{{ 'PUBLISHED_DATE' | translate }}</strong> {{ book.publishedDate }}</p>
+    <p class="book-pageCount"><strong>{{ 'PAGE_COUNT' | translate }}</strong> {{ book.pageCount }}</p>
+    <p class="book-averageRating"><strong>{{ 'AVERAGE_RATING' | translate }}</strong> {{ book.averageRating || 'No rating' }}</p>
+    <div class="book-description">
+      <h2>{{ 'DESCRIPTION' | translate }}</h2>
+      <p>{{ book.description }}</p>
     </div>
+    <a [href]="book.previewLink" target="_blank" class="book-preview-link">{{ 'PREVIEW' | translate }}</a>
   </div>
-  <div class="book-meta">
-    <p><strong>Ngày xuất bản:</strong> {{ book.publishedDate }}</p>
-    <p><strong>Số trang:</strong> {{ book.pageCount }}</p>
-    <p><strong>Đánh giá:</strong> {{ book.averageRating || 'No rating' }}</p>
-  </div>
-  <div class="book-description">
-    <h2>Mô tả:</h2>
-    <p>{{ book.description }}</p>
-  </div>
-  <div class="book-preview">
-    <a [href]="book.previewLink" target="_blank">Preview</a>
-  </div>
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
 </div>

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AppwriteService } from '../appwrite.service';
+import { TranslateService } from '@ngx-translate/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
@@ -13,8 +14,14 @@ export class NavigationComponent {
   @Input() wishListCount: number = 0;
   user: any;
 
-  constructor(private appwriteService: AppwriteService, library: FaIconLibrary) {
+  constructor(
+    private appwriteService: AppwriteService, 
+    private translate: TranslateService, 
+    library: FaIconLibrary
+  ) {
     library.addIcons(faGoogle);  // Add Google icon to the library
+    translate.addLangs(['en', 'fr', 'vi']);
+    translate.setDefaultLang('en');
   }
 
   ngOnInit() {
@@ -33,5 +40,13 @@ export class NavigationComponent {
     this.appwriteService.logout().then(() => {
       this.user = null;
     });
+  }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
+  getFirstName(fullName: string): string {
+    return fullName.split(' ')[0];
   }
 }

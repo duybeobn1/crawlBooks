@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppwriteService } from '../appwrite.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-details',

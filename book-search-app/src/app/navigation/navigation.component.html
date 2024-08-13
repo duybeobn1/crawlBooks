@@ -1,19 +1,29 @@
 <nav class="navbar">
   <div class="nav-links">
-    <a routerLink="/search">Tìm kiếm sách</a>
-    <a routerLink="/read-list">Danh sách đã đọc ({{ readListCount }})</a>
-    <a routerLink="/wish-list">Danh sách sẽ đọc ({{ wishListCount }})</a>
+    <a routerLink="/search">{{ 'SEARCH_BUTTON' | translate }}</a>
+    <a routerLink="/read-list">{{ 'READ_LIST' | translate }} ({{ readListCount }})</a>
+    <a routerLink="/wish-list">{{ 'WISH_LIST' | translate }} ({{ wishListCount }})</a>
   </div>
   <div class="user-info">
     <ng-container *ngIf="!user">
-      <button class="google-signin" (click)="login()">
-        <fa-icon [icon]="['fab', 'google']"></fa-icon>
-        Sign in with Google
+      <button mat-raised-button color="primary" (click)="login()">
+        <mat-icon>login</mat-icon>
+        {{ 'LOGIN' | translate }}
       </button>
     </ng-container>
     <ng-container *ngIf="user">
-      <span>Welcome, {{ user.name }}</span>
-      <button (click)="logout()">Logout</button>
+      <span>Welcome, {{ getFirstName(user.name) }}</span>
+      <button mat-raised-button color="warn" (click)="logout()">{{ 'LOGOUT' | translate }}</button>
     </ng-container>
+    <div class="language-switcher">
+      <button mat-icon-button [matMenuTriggerFor]="languageMenu">
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #languageMenu="matMenu">
+        <button mat-menu-item (click)="switchLanguage('en')">English</button>
+        <button mat-menu-item (click)="switchLanguage('vi')">Tiếng Việt</button>
+        <button mat-menu-item (click)="switchLanguage('fr')">Français</button>
+      </mat-menu>
+    </div>
   </div>
 </nav>

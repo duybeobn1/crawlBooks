@@ -1,14 +1,18 @@
 <div class="list-container">
   <div class="book-card" *ngFor="let book of readList">
     <div class="book-thumbnail">
-      <img [src]="book.imageUrl || 'assets/no-image.png'" alt="{{ book.title }}">
+      <a [routerLink]="['/book-details', book.$id]">
+        <img [src]="book.imageUrl || 'assets/no-image.png'" alt="{{ book.title }}">
+      </a>
     </div>
     <div class="book-info">
-      <h3>{{ book.title }}</h3>
+      <a [routerLink]="['/book-details', book.$id]" style="text-decoration: none;">
+        <h3>{{ book.title }}</h3>
+      </a>
       <p>{{ book.author }}</p>
     </div>
     <div class="actions">
-      <button mat-button (click)="removeFromReadList(book)">Remove from Wishlist</button>
+      <button mat-button (click)="removeFromReadList(book)">{{ 'REMOVE_FROM_READLIST' | translate }}</button>
     </div>
   </div>
 </div>

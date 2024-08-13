@@ -17,6 +17,7 @@ export class BookSearchComponent {
     private bookService: BookService,
     private appwriteService: AppwriteService,
     private readListService: ReadListService
+    
   ) {}
 
   searchBooks() {

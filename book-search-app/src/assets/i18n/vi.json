@@ -1,0 +1,21 @@
+{
+  "SEARCH_PLACEHOLDER": "Nhập tên sách",
+  "AUTHOR_PLACEHOLDER": "Nhập tên tác giả (không bắt buộc)",
+  "SEARCH_BUTTON": "Tìm Kiếm",
+  "ADD_TO_READ_LIST": "Thêm vào danh sách đã đọc",
+  "ADD_TO_WISH_LIST": "Thêm vào danh sách sẽ đọc",
+  "REMOVE_FROM_READLIST": "Xóa khỏi danh sách đã đọc",
+  "REMOVE_FROM_WISHLIST": "Xóa khỏi danh sách mong muốn",
+  "AUTHOR": "Tác giả:",
+  "PUBLISHED_DATE": "Ngày xuất bản:",
+  "PAGE_COUNT": "Số trang:",
+  "AVERAGE_RATING": "Đánh giá:",
+  "NO_RATING": "Không có đánh giá",
+  "DESCRIPTION": "Mô tả:",
+  "PREVIEW": "Xem trước",
+  "LOGIN": "Đăng nhập",
+  "LOGOUT": "Đăng xuất",
+  "WELCOME": "Chào mừng",
+  "READ_LIST": "Danh sách đã đọc",
+  "WISH_LIST": "Danh sách sẽ đọc"
+}
