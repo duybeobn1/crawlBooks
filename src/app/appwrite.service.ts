@@ -22,8 +22,8 @@ export class AppwriteService {
   }
 
   loginWithGoogle() {
-    const successUrl = "www.bookstamp.site/search"; // Redirect here on success
-    const failureUrl = "www.bookstamp.ste/login-failure"; // Redirect here on failure
+    const successUrl = window.location.origin + '/dashboard';
+    const failureUrl = window.location.origin + '/login-failure'; 
 
     this.account.createOAuth2Session(OAuthProvider.Google, successUrl, failureUrl);
   }
