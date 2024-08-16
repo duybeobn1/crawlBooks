@@ -7,8 +7,16 @@
   color: var(--text-color);
 }
 
+.menu-icon {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
 .nav-links a {
-  margin-right: 20px;
   text-decoration: none;
   color: var(--text-color);
 }
@@ -16,88 +24,47 @@
 .user-info {
   display: flex;
   align-items: center;
-}
-
-.language-switcher {
-  margin-left: 10px;
+  gap: 10px;
 }
 
 .logout-button {
-  margin-left: 10px;
   background-color: var(--button-background-color);
   color: var(--button-text-color);
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
+/* Responsive design */
+@media (max-width: 768px) {
   .nav-links {
-    display: flex;
+    display: none;
     flex-direction: column;
-    align-items: flex-start;
+    background-color: #1f1f1f; /* Dark background for dropdown */
+    position: absolute;
+    top: 50px;
+    left: 0;
     width: 100%;
+    padding: 10px;
+    gap: 15px;
+    border-top: 1px solid #333; /* Optional: adds a separator line for clarity */
   }
 
   .nav-links a {
-    margin: 10px 0;
+    color: #ffffff; /* White text for dropdown links */
+  }
+
+  .menu-open {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
   }
 
   .user-info {
-    margin-top: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .user-info span,
-  .logout-button,
-  .language-switcher {
-    margin-top: 5px;
-  }
-
-  .language-switcher {
-    margin-left: 0;
-  }
-
-  .search-container {
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-end;
     width: 100%;
   }
 
-  .search-input,
-  .search-button {
-    width: 100%;
-    margin-bottom: 10px;
+  .user-info .menu-icon {
+    margin-right: auto;
   }
-}
-
-/* Light theme */
-:root {
-  --background-color: #ffffff;
-  --text-color: #333333;
-  --navbar-background-color: #3f51b5;
-  --button-background-color: #3f51b5;
-  --button-text-color: #ffffff;
-}
-
-/* Dark theme */
-.dark-mode {
-  --background-color: #121212;
-  --text-color: #e0e0e0;
-  --navbar-background-color: #1f1f1f;
-  --button-background-color: #6200ee;
-  --button-text-color: #ffffff;
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-button {
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
 }

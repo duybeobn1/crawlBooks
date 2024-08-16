@@ -15,6 +15,7 @@ export class NavigationComponent {
   @Input() wishListCount: number = 0;
   user: any;
   isDarkMode: boolean = false;
+  menuOpen: boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -63,24 +64,26 @@ export class NavigationComponent {
 
   toggleTheme() {
     if (isPlatformBrowser(this.platformId)) {
-        this.isDarkMode = !this.isDarkMode;
-        localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
-        this.updateTheme();
+      this.isDarkMode = !this.isDarkMode;
+      localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+      this.updateTheme();
     }
   }
 
   updateTheme() {
     const rootElement = document.documentElement;
     if (this.isDarkMode) {
-        rootElement.classList.add('dark-mode');
-        rootElement.classList.remove('light-mode');
+      rootElement.classList.add('dark-mode');
     } else {
-        rootElement.classList.add('light-mode');
-        rootElement.classList.remove('dark-mode');
+      rootElement.classList.remove('dark-mode');
     }
   }
 
   getFirstName(fullName: string): string {
     return fullName.split(' ')[0];
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 }
