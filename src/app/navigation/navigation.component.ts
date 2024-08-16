@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { AppwriteService } from '../appwrite.service';
 import { TranslateService } from '@ngx-translate/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -13,37 +14,70 @@ export class NavigationComponent {
   @Input() readListCount: number = 0;
   @Input() wishListCount: number = 0;
   user: any;
+  isDarkMode: boolean = false;
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private appwriteService: AppwriteService, 
     private translate: TranslateService, 
     library: FaIconLibrary
   ) {
-    library.addIcons(faGoogle);  // Add Google icon to the library
+    library.addIcons(faGoogle);
     translate.addLangs(['en', 'fr', 'vi']);
     translate.setDefaultLang('en');
   }
 
   ngOnInit() {
-    this.appwriteService.getCurrentUser().then(user => {
-      this.user = user;
-    }).catch(() => {
-      this.user = null;
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.appwriteService.getCurrentUser().then(user => {
+        this.user = user;
+      }).catch(() => {
+        this.user = null;
+      });
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        this.isDarkMode = savedTheme === 'dark';
+        this.updateTheme();
+      }
+    }
   }
 
   login() {
-    this.appwriteService.loginWithGoogle();
+    if (isPlatformBrowser(this.platformId)) {
+      this.appwriteService.loginWithGoogle();
+    }
   }
 
   logout() {
-    this.appwriteService.logout().then(() => {
-      this.user = null;
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.appwriteService.logout().then(() => {
+        this.user = null;
+      });
+    }
   }
 
   switchLanguage(language: string) {
     this.translate.use(language);
+  }
+
+  toggleTheme() {
+    if (isPlatformBrowser(this.platformId)) {
+        this.isDarkMode = !this.isDarkMode;
+        localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+        this.updateTheme();
+    }
+  }
+
+  updateTheme() {
+    const rootElement = document.documentElement;
+    if (this.isDarkMode) {
+        rootElement.classList.add('dark-mode');
+        rootElement.classList.remove('light-mode');
+    } else {
+        rootElement.classList.add('light-mode');
+        rootElement.classList.remove('dark-mode');
+    }
   }
 
   getFirstName(fullName: string): string {

@@ -1,86 +1,127 @@
+/* Container for the search bar */
 .search-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  justify-content: space-between;
 }
 
+/* Input fields and search button styling */
 .search-input {
-  width: 200px;
+  flex: 1;
   padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 .search-button {
-  background-color: #000;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: #00f3ff;
-  border: none;
-  cursor: pointer;
+  justify-content: center;
+  padding: 10px;
 }
 
-.search-button fa-icon {
-  color: #00f3ff;
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .search-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-input, .search-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 
-
+/* Container for the results */
 .results-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-around;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .result-card {
-  width: 200px;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: calc(100% / 6 - 30px); /* Adjust based on desired number of cards per row */
+  min-width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: #fff;
+  margin-bottom: 20px;
 }
 
 .book-thumbnail img {
-  width: 100px;
-  height: 150px;
+  width: 150px;
+  height: auto;
   margin-bottom: 10px;
+  border-radius: 8px;
 }
 
-.book-info h3 {
-  font-size: 16px;
-  line-height: 1.2;
-  max-height: 3.6em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-}
-
-.book-info p {
-  font-size: 14px;
-  color: #333;
+.book-info {
+  margin-bottom: 15px;
+  min-height: 70px; /* Ensure a minimum height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .actions {
-  margin-top: auto;
+  margin-top: auto; /* Push the buttons to the bottom of the card */
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .actions button {
-  margin: 5px 0;
-  padding: 8px;
   width: 100%;
 }
 
+@media (max-width: 600px) {
+  .result-card {
+    width: 100%; /* Make the cards take full width on small screens */
+  }
+}
+.read-list-button {
+  background-color: #4CAF50; /* Green background for the Read List button */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
+.read-list-button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.wish-list-button {
+  background-color: #FF5722; /* Orange background for the Wish List button */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.wish-list-button:hover {
+  background-color: #E64A19; /* Slightly darker orange on hover */
+}
 

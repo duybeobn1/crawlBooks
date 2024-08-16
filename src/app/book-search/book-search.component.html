@@ -13,16 +13,16 @@
            [src]="book.volumeInfo.imageLinks.thumbnail" 
            alt="{{ book.volumeInfo.title }}">
       <img *ngIf="!book.volumeInfo.imageLinks?.thumbnail" 
-           src="../../assets/no-image.png" 
-           alt="No Image Available">
+           src="assets/no-image.png" 
+           alt="{{ 'NO_IMAGE_AVAILABLE' | translate }}">
     </div>
     <div class="book-info">
       <h3>{{ book.volumeInfo.title }}</h3>
       <p>{{ book.volumeInfo.authors?.join(', ') }}</p>
     </div>
     <div class="actions">
-      <button mat-button (click)="addToReadList(book)">Thêm vào danh sách đã đọc</button>
-      <button mat-button (click)="addToWishList(book)">Thêm vào danh sách sẽ đọc</button>
+      <button mat-button class="read-list-button" (click)="addToReadList(book)">{{ 'ADD_TO_READ_LIST' | translate }}</button>
+      <button mat-button class="wish-list-button" (click)="addToWishList(book)">{{ 'ADD_TO_WISH_LIST' | translate }}</button>
     </div>
   </div>
 </div>

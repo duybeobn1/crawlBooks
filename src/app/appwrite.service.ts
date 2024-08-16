@@ -9,8 +9,8 @@ export class AppwriteService {
   private client: Client;
   private account: Account;
   private databases: Databases;
-  private databaseId = 'bookstamp';  // Replace with your actual database ID
-  private collectionId = 'bookstamp1';  // Replace with your actual collection ID
+  private databaseId = 'Bookstamp';  // Replace with your actual database ID
+  private collectionId = 'BookStamp';  // Replace with your actual collection ID
 
   constructor() {
     this.client = new Client()

@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="nav-links">
-    <a routerLink="/search">{{ 'SEARCH_BUTTON' | translate }}</a>
+    <a routerLink="/search">{{ 'SEARCH' | translate }} </a>
     <a routerLink="/read-list">{{ 'READ_LIST' | translate }} ({{ readListCount }})</a>
     <a routerLink="/wish-list">{{ 'WISH_LIST' | translate }} ({{ wishListCount }})</a>
   </div>
@@ -12,8 +12,11 @@
       </button>
     </ng-container>
     <ng-container *ngIf="user">
-      <span>Welcome, {{ getFirstName(user.name) }}</span>
-      <button mat-raised-button color="warn" (click)="logout()">{{ 'LOGOUT' | translate }}</button>
+      <mat-icon>account_circle</mat-icon>
+      <span>{{ 'WELCOME' | translate }}, {{ getFirstName(user.name) }}</span>
+      <button mat-raised-button class="logout-button" (click)="logout()">
+        {{ 'LOGOUT' | translate }}
+      </button>
     </ng-container>
     <div class="language-switcher">
       <button mat-icon-button [matMenuTriggerFor]="languageMenu">
@@ -24,6 +27,11 @@
         <button mat-menu-item (click)="switchLanguage('vi')">Tiếng Việt</button>
         <button mat-menu-item (click)="switchLanguage('fr')">Français</button>
       </mat-menu>
+    </div>
+    <div class="theme-toggle">
+      <button mat-icon-button (click)="toggleTheme()">
+        <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
     </div>
   </div>
 </nav>
